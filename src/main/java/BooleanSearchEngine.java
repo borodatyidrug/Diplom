@@ -22,9 +22,7 @@ public class BooleanSearchEngine implements SearchEngine {
                 // Набор слов с их количествами для текущей страницы
                 Map<String, Integer> freqs = new HashMap<>();
                 for (String word : words) {
-                    if(word.isBlank()) {
-                        continue;
-                    } else {
+                    if(!word.isBlank()) {
                         freqs.put(word.toLowerCase(), freqs.getOrDefault(word, 0) + 1);
                     }
                 }
@@ -58,9 +56,9 @@ public class BooleanSearchEngine implements SearchEngine {
         if (index.containsKey(word)) {
             return index.get(word);
         } else {
-            // Если слово - не найдено, то вернем список с одним елементом с паракметрами по-умолчанию
+            // Если слово - не найдено, то вернем список с одним елементом с параметрами по-умолчанию
             List<PageEntry> defaultList = new ArrayList<>();
-            defaultList.add(new PageEntry(word, 0, 0));
+            defaultList.add(new PageEntry("Несуществующий документ.pdf", 0, 0));
             return defaultList;
         }
     }

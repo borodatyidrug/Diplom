@@ -26,6 +26,7 @@ public class Server {
             
             System.out.println("Установлено новое соединение.");
             while (true) {
+                out.flush();
                 out.println("Введите ключевое слово для поиска в формате /{слово} или <end> для завершения сеанса.");
                 String request = in.readLine().trim().split(" ")[0];
                 if (request.equals("<end>")) {
